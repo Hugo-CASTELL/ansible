@@ -35,12 +35,14 @@
   npm:
     name: n
     global: yes
+  environment:
+    PATH: "{{ ansible_env.HOME }}/.local/.npm-global/bin:{{ ansible_env.PATH }}"
   tags:
     - install
     - node
 
 - name: Install correct version of Node
-  shell: n 14
+  shell: "{{ ansible_env.HOME }}/.local/.npm-global/bin/n 14"
   tags:
     - install
     - node

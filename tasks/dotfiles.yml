@@ -4,20 +4,47 @@
     - install
     - dotfiles
     - stow
+
 - name: Cloning .dotfiles
   ansible.builtin.git:
-    repo: 'git@github.com:ThePrimeagen/.dotfiles.git'
+    repo: 'git@github.com:Hugo-CASTELL/.dotfiles.git'
     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
     recursive: yes
     update: yes
     accept_hostkey: yes
-    version: master
+    version: main
   tags:
     - install
     - dotfiles
     - stow
+
+- name: Ensure execute permissions for script 1 (stow_files)
+  become: true
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.dotfiles/stow_files"
+    mode: "0777"
+    owner: "{{ ansible_effective_user_id }}"
+    group: "{{ ansible_effective_group_id }}"
+  tags:
+    - install
+    - dotfiles
+    - stow
+
+- name: Ensure execute permissions for script 2 (install)
+  become: true
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.dotfiles/install"
+    mode: "0777"
+    owner: "{{ ansible_effective_user_id }}"
+    group: "{{ ansible_effective_group_id }}"
+  tags:
+    - install
+    - dotfiles
+    - stow
+
 - name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./ubuntu
+  become: true
+  shell: "zsh {{ lookup('env', 'HOME') }}/.dotfiles/stow_files"
   tags:
     - install
     - dotfiles
