@@ -5,6 +5,7 @@
     value: "hugo.castell@outlook.fr"
   tags:
   - git-personal
+
 - name: Git personal setup name
   git_config:
     name: user.name

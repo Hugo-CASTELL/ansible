@@ -21,7 +21,7 @@
 - name: Install packages
   become: true
   apt:
-    name: [ "tmux", "wireshark", "fzf", "kdenlive", "xclip", "screenkey", "tldr", "ripgrep", "shutter" ]
+    name: [ "ripgrep" ]
   tags:
     - install
     - productivity
