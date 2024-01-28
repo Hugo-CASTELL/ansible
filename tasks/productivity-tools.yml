@@ -1,4 +1,4 @@
-- name: kdenlive ppa (ppa:kdenlive/kdenlive-stable)
+- name: Kdenlive ppa (ppa:kdenlive/kdenlive-stable)
   become: true
   apt_repository:
    repo: ppa:kdenlive/kdenlive-stable
@@ -8,7 +8,7 @@
     - install
     - productivity
 
-- name: shutter ppa (ppa:linuxuprising/shutter)
+- name: Shutter ppa (ppa:linuxuprising/shutter)
   become: true
   apt_repository:
    repo: ppa:linuxuprising/shutter
@@ -18,7 +18,15 @@
     - install
     - productivity
 
-- name: Install packages
+- name: Gimp
+  become: true
+  apt:
+    name: [ "gimp" ]
+  tags:
+    - install
+    - productivity
+
+- name: RipGrep
   become: true
   apt:
     name: [ "ripgrep" ]
