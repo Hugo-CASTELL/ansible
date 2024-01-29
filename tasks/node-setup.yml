@@ -42,7 +42,8 @@
     - node
 
 - name: Install correct version of Node
-  shell: "{{ ansible_env.HOME }}/.local/.npm-global/bin/n 14"
+  become: true
+  shell: "{{ ansible_env.HOME }}/.local/.npm-global/bin/n 18"
   tags:
     - install
     - node

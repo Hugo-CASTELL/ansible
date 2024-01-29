@@ -27,14 +27,14 @@
     - dotfiles
     - install
     - ssh
-
-- name: Set authorized key took from file
-  authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
-    state: present
-    key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
-  with_fileglob:
-  - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+    
+- name: Ensure execute permissions
+  become: true
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+    mode: "0777"
+    owner: "{{ ansible_effective_user_id }}"
+    group: "{{ ansible_effective_group_id }}"
   tags:
     - dotfiles
     - install

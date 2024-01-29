@@ -1,11 +1,2 @@
-[x] brave.yml
-[x] core-setup.yml
-[x] dotfiles.yml
-[x] git-setup.yml
-[x] hist-cli.yml
-[x] node-setup.yml
-[x] npm-packages.yml
-[x] nvim-setup.yml
-[x] productivity-tools.yml
-[x] ssh.yml
-[x] zsh-setup.yml
+[ ] Installer Node 18
+[ ] Donner droits ./config/nvim (sudo chmod -R)
