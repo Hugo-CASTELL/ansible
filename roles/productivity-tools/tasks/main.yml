@@ -1,25 +1,14 @@
+---
 - name: Kdenlive ppa (ppa:kdenlive/kdenlive-stable)
-  become: true
   apt_repository:
    repo: ppa:kdenlive/kdenlive-stable
    state: present
    update_cache: True
-  tags:
-    - install
-    - productivity
 
 - name: Gimp
-  become: true
   apt:
     name: [ "gimp" ]
-  tags:
-    - install
-    - productivity
 
 - name: RipGrep
-  become: true
   apt:
     name: [ "ripgrep" ]
-  tags:
-    - install
-    - productivity

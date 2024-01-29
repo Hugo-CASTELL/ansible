@@ -1,0 +1,12 @@
+---
+- name: Install nodejs and npm
+  apt:
+    name: ["nodejs", "npm"]
+
+- name: Install correct version of Node (20)
+  npm: 
+    name: n
+    global: true
+
+- name: n 20
+  shell: n 20

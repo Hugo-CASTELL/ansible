@@ -1,0 +1,25 @@
+---
+- name: Install build-essential, cmake, pkg-config, pthread, ninja-build
+  become: true
+  apt:
+    name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev", "ninja-build"]
+
+- name: Install unzip, libtool, libtool-bin, gettext
+  become: true
+  apt:
+    name: [ "unzip", "libtool", "libtool-bin", "gettext"]
+
+- name: Install lua, python-pip, clangd
+  become: true
+  apt:
+    name: [ "lua5.1", "python3-pip", "clangd" ]
+
+- name: Install git, curl, dconf-cli, dconf-editor
+  become: true
+  apt:
+    name: [ "git", "curl", "dconf-editor", "dconf-cli" ]
+
+- name: Install tmux, fzf
+  become: true
+  apt:
+    name: [ "tmux", "fzf" ]

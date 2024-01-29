@@ -1,16 +1,10 @@
 - name: Remove neovim
   shell: rm -rf ~/neovim
-  tags:
-    - install
-    - neovim
 
 - name: Clone Neovim
   ansible.builtin.git:
     repo: 'https://github.com/neovim/neovim.git'
     dest: "{{ lookup('env', 'HOME') }}/neovim"
-  tags:
-    - install
-    - neovim
 
 - name: Build neovim
   shell: "cd {{ lookup('env', 'HOME') }}/neovim && make -j 20"
@@ -20,15 +14,8 @@
 
 - name: Install neovim
   become: true
-  shell: "cd {{ lookup('env', 'HOME') }}/neovim && make install"
-  tags:
-    - install
-    - neovim
+  shell: "cd $HOME/neovim && make install"
 
 - name: Install a debugger to call for neovim
-  become: true
   apt:
     name: ["lldb"]
-  tags:
-    - install
-    - neovim
