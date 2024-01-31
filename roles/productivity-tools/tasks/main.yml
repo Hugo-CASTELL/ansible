@@ -1,10 +1,4 @@
 ---
-- name: Kdenlive ppa (ppa:kdenlive/kdenlive-stable)
-  apt_repository:
-   repo: ppa:kdenlive/kdenlive-stable
-   state: present
-   update_cache: True
-
 - name: Gimp
   apt:
     name: [ "gimp" ]

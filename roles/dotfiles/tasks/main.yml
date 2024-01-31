@@ -4,12 +4,12 @@
     name: [ "stow" ]
 
 - name: Remove dotfiles
-  shell: rm -rf ~/.dotfiles
+  shell: rm -rf {{ home_directory }}/.dotfiles
 
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'git@github.com:Hugo-CASTELL/.dotfiles.git'
-    dest: "$HOME/.dotfiles"
+    dest: "{{ home_directory }}/.dotfiles"
     recursive: yes
     update: yes
     accept_hostkey: yes
@@ -17,17 +17,19 @@
 
 - name: Ensure execute permissions for script 1 (stow_files)
   ansible.builtin.file:
-    path: "$HOME/.dotfiles/stow_files"
+    path: "{{ home_directory }}/.dotfiles/stow_files"
     mode: "0777"
     owner: "{{ ansible_effective_user_id }}"
     group: "{{ ansible_effective_group_id }}"
 
 - name: Ensure execute permissions for script 2 (install)
   ansible.builtin.file:
-    path: "$HOME/.dotfiles/install"
+    path: "{{ home_directory }}/.dotfiles/install"
     mode: "0777"
     owner: "{{ ansible_effective_user_id }}"
     group: "{{ ansible_effective_group_id }}"
 
 - name: Stow dotfiles
-  shell: "zsh $HOME/.dotfiles/stow_files"
+  shell: "zsh {{ home_directory }}/.dotfiles/stow_files"
+  become_user: "{{ user }}"
+

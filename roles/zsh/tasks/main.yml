@@ -5,14 +5,13 @@
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
 
-- name: Check that the somefile.conf exists
-  become: true
-  stat:
-    path: /home/theprimeagen/.oh-my-zsh
-  register: oh_my_stats
+- name: Remove .oh-my-zsh
+  shell: rm -rf ~/.oh-my-zsh
+  become_user: "{{ user }}"
 
 - name: Oh-My-Zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  become_user: "{{ user }}"
 
 - name: Install zsh-autosuggestions
   become: true

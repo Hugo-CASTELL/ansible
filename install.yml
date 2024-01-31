@@ -3,6 +3,8 @@
   become: true
   hosts: localhost
   vars:
+    user: "{{ lookup('env', 'USER') }}"
+    home_directory: "{{ lookup('env', 'HOME') }}"
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   pre_tasks:
