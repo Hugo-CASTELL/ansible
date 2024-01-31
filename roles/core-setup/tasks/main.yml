@@ -19,7 +19,7 @@
   apt:
     name: [ "git", "curl", "dconf-editor", "dconf-cli" ]
 
-- name: Install tmux, fzf
+- name: Install tmux, fzf, wmctrl
   become: true
   apt:
-    name: [ "tmux", "fzf" ]
+    name: [ "tmux", "fzf", "wmctrl" ]

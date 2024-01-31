@@ -5,8 +5,6 @@
   vars:
     user: "{{ lookup('env', 'USER') }}"
     home_directory: "{{ lookup('env', 'HOME') }}"
-    source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   pre_tasks:
   - name: Update apt
     become: true
@@ -15,11 +13,6 @@
       update_cache: true
       state: present
   roles:
-    - core-setup
-    - git-setup
-    - zsh
-    - ssh
-    - dotfiles
-    - node-setup
-    - npm-packages
-    - nvim-setup
+    - brave
+    - discord
+    - productivity-tools
